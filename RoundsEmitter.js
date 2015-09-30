@@ -69,6 +69,7 @@ RoundsEmitter.prototype.setNext = function setNext(fn){
   else if (fn === 'roundEnd'){ this._next = this.roundEnd; }
   else if (fn === 'turnStart'){ this._next = this.turnStart; }
   else if (fn === 'turnEnd'){ this._next = this.turnEnd; }
+  else if (fn === 'gameOver'){ this._next = this.gameOver; }
   else{
     this._next = fn;
   }
