@@ -1,0 +1,19 @@
+{
+  "name": "rounds-emitter",
+  "version": "1.0.0",
+  "description": "An event emitter that keeps track of what round and turn it is.",
+  "main": "RoundsEmitter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "game",
+    "round",
+    "event",
+    "emitter",
+    "game",
+    "loop"
+  ],
+  "author": "Tyler Brothers <tylerbrothers1@gmail.com> (www.thetylerbrothers.com)",
+  "license": "ISC"
+}
