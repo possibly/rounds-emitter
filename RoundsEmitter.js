@@ -21,7 +21,7 @@ RoundsEmitter.prototype.next = function next(){
 }
 
 RoundsEmitter.prototype.roundStart = function roundStart(){
-  this._roundNumber++;
+  this._rounds++;
   this._next = this.turnStart;
   this.emit('roundStart', this._rounds);
 }
