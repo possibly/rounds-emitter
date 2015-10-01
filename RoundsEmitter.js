@@ -6,7 +6,7 @@ function RoundsEmitter(maxRounds){
   this._rounds = 0;
   this._turns = 0;
   this._roundsRemaining = maxRounds || 1;
-  this._next = this.roundStart;
+  this._next = this.setup;
 
   events.EventEmitter.call(this);
 }
@@ -19,6 +19,11 @@ RoundsEmitter.prototype.next = function next(){
   }else{
     this._next(arguments);
   }
+}
+
+RoundsEmitter.prototype.setup = function setup(){
+  this._next = this.roundStart;
+  this.emit('setup');
 }
 
 RoundsEmitter.prototype.roundStart = function roundStart(){
