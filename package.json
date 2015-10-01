@@ -15,5 +15,6 @@
     "loop"
   ],
   "author": "Tyler Brothers <tylerbrothers1@gmail.com> (www.thetylerbrothers.com)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {}
 }

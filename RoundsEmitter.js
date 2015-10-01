@@ -1,3 +1,4 @@
+//node modules
 var events = require('events');
 var util = require('util');
 
@@ -16,31 +17,31 @@ RoundsEmitter.prototype.next = function next(){
   if (this._roundsRemaining == 0){
     this.emit('gameOver');
   }else{
-    this._next();
+    this._next(arguments);
   }
 }
 
 RoundsEmitter.prototype.roundStart = function roundStart(){
   this._rounds++;
   this._next = this.turnStart;
-  this.emit('roundStart', this._rounds);
+  this.emit('roundStart', this._rounds, arguments);
 }
 
 RoundsEmitter.prototype.roundEnd = function roundEnd(){
   this._roundsRemaining--;
   this._next = this.roundStart;
-  this.emit('roundEnd', this._rounds);
+  this.emit('roundEnd', this._rounds, arguments);
 }
 
 RoundsEmitter.prototype.turnStart = function turnStart(){
   this._turns++;
   this._next = this.turnEnd;
-  this.emit('turnStart', this._rounds, this._turns);
+  this.emit('turnStart', this._rounds, this._turns, arguments);
 }
 
 RoundsEmitter.prototype.turnEnd = function turnEnd(){
   this._next = this.roundEnd;
-  this.emit('turnEnd', this._rounds, this._turns);
+  this.emit('turnEnd', this._rounds, this._turns, arguments);
 }
 
 RoundsEmitter.prototype.gameOver = function gameOver(){
