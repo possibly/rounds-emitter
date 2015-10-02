@@ -17,7 +17,8 @@ RoundsEmitter.prototype.next = function next(){
   if (this._roundsRemaining == 0){
     this.emit('gameOver');
   }else{
-    this._next(arguments);
+    var args = Array.prototype.slice.call(arguments);
+    this._next(args);
   }
 }
 
@@ -26,27 +27,27 @@ RoundsEmitter.prototype.setup = function setup(){
   this.emit('setup');
 }
 
-RoundsEmitter.prototype.roundStart = function roundStart(){
+RoundsEmitter.prototype.roundStart = function roundStart(args){
   this._rounds++;
   this._next = this.turnStart;
-  this.emit('roundStart', this._rounds, arguments);
+  this.emit('roundStart', this._rounds, args);
 }
 
-RoundsEmitter.prototype.roundEnd = function roundEnd(){
+RoundsEmitter.prototype.roundEnd = function roundEnd(args){
   this._roundsRemaining--;
   this._next = this.roundStart;
-  this.emit('roundEnd', this._rounds, arguments);
+  this.emit('roundEnd', this._rounds, args);
 }
 
-RoundsEmitter.prototype.turnStart = function turnStart(){
+RoundsEmitter.prototype.turnStart = function turnStart(args){
   this._turns++;
   this._next = this.turnEnd;
-  this.emit('turnStart', this._rounds, this._turns, arguments);
+  this.emit('turnStart', this._rounds, this._turns, args);
 }
 
-RoundsEmitter.prototype.turnEnd = function turnEnd(){
+RoundsEmitter.prototype.turnEnd = function turnEnd(args){
   this._next = this.roundEnd;
-  this.emit('turnEnd', this._rounds, this._turns, arguments);
+  this.emit('turnEnd', this._rounds, this._turns, args);
 }
 
 RoundsEmitter.prototype.gameOver = function gameOver(){
